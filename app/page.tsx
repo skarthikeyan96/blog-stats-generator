@@ -1,78 +1,100 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState } from "react"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import { Label } from "@/components/ui/label"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Loader2, TrendingUp, BookOpen, Github, ExternalLink } from "lucide-react"
-import { StatsDisplay } from "@/components/stats-display"
-import { Footer } from "@/components/footer"
+import { useState } from "react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  Loader2,
+  TrendingUp,
+  BookOpen,
+  Github,
+  ExternalLink,
+} from "lucide-react";
+import { StatsDisplay } from "@/components/stats-display";
+import { Footer } from "@/components/footer";
 
 interface BlogStats {
   user: {
-    name: string
-    username: string
-    profile_image: string
-    summary: string
-    location: string
-    joined_at: string
-  }
+    name: string;
+    username: string;
+    profile_image: string;
+    summary: string;
+    location: string;
+    joined_at: string;
+  };
   articles: Array<{
-    id: number
-    title: string
-    published_at: string
-    public_reactions_count: number
-    comments_count: number
-    page_views_count: number
-    tags: string[]
-  }>
-  totalArticles: number
-  totalReactions: number
-  totalComments: number
-  totalViews: number
-  averageReactions: number
-  mostPopularArticle: any
-  topTags: Array<{ tag: string; count: number }>
+    id: number;
+    title: string;
+    published_at: string;
+    public_reactions_count: number;
+    comments_count: number;
+    page_views_count: number;
+    tags: string[];
+  }>;
+  totalArticles: number;
+  totalReactions: number;
+  totalComments: number;
+  totalViews: number;
+  averageReactions: number;
+  mostPopularArticle: any;
+  topTags: Array<{ tag: string; count: number }>;
 }
 
 export default function BlogStatsApp() {
-  const [platform, setPlatform] = useState("devto")
-  const [username, setUsername] = useState("")
-  const [year, setYear] = useState(new Date().getFullYear().toString())
-  const [loading, setLoading] = useState(false)
-  const [stats, setStats] = useState<BlogStats | null>(null)
-  const [error, setError] = useState("")
+  const [platform, setPlatform] = useState("devto");
+  const [username, setUsername] = useState("");
+  const [year, setYear] = useState(new Date().getFullYear().toString());
+  const [loading, setLoading] = useState(false);
+  const [stats, setStats] = useState<BlogStats | null>(null);
+  const [error, setError] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
     if (!username.trim()) {
-      setError("Please enter a username")
-      return
+      setError("Please enter a username");
+      return;
     }
 
-    setLoading(true)
-    setError("")
-    setStats(null)
+    setLoading(true);
+    setError("");
+    setStats(null);
 
     try {
-      const response = await fetch(`/api/${platform}-stats?username=${encodeURIComponent(username)}&year=${year}`)
-      const data = await response.json()
+      const response = await fetch(
+        `/api/${platform}-stats?username=${encodeURIComponent(
+          username
+        )}&year=${year}`
+      );
+      const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || "Failed to fetch stats")
+        throw new Error(data.error || "Failed to fetch stats");
       }
 
-      setStats(data)
+      setStats(data);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "An error occurred")
+      setError(err instanceof Error ? err.message : "An error occurred");
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   const getPlatformInfo = () => {
     switch (platform) {
@@ -86,7 +108,7 @@ export default function BlogStatsApp() {
             "• Data includes articles, reactions, and comments",
             "• Charts show monthly activity patterns",
           ],
-        }
+        };
       case "hashnode":
         return {
           name: "Hashnode",
@@ -97,7 +119,7 @@ export default function BlogStatsApp() {
             "• Support for custom domains",
             "• Publication statistics",
           ],
-        }
+        };
       case "medium":
         return {
           name: "Medium",
@@ -108,17 +130,17 @@ export default function BlogStatsApp() {
             "• Publication analytics",
             "• Reading time statistics",
           ],
-        }
+        };
       default:
         return {
           name: "Dev.to",
           placeholder: "e.g., ben",
           tips: ["• Select a platform to get started"],
-        }
+        };
     }
-  }
+  };
 
-  const platformInfo = getPlatformInfo()
+  const platformInfo = getPlatformInfo();
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
@@ -129,9 +151,11 @@ export default function BlogStatsApp() {
             <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
               <BookOpen className="text-white w-6 h-6" />
             </div>
-            <h1 className="text-4xl font-bold text-slate-900">Blog Stats Generator</h1>
+            <h1 className="text-4xl font-bold text-slate-900">
+              Blog Stats Generator
+            </h1>
             <a
-              href="https://github.com/yourusername/blog-stats-generator"
+              href="https://github.com/skarthikeyan96/blog-stats-generator"
               target="_blank"
               rel="noopener noreferrer"
               className="ml-4 inline-flex items-center gap-2 px-3 py-2 bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-colors text-sm font-medium"
@@ -141,8 +165,9 @@ export default function BlogStatsApp() {
             </a>
           </div>
           <p className="text-slate-600 text-lg max-w-2xl mx-auto">
-            Generate comprehensive statistics for your blog across multiple platforms. Analyze your writing activity,
-            engagement metrics, and growth patterns.
+            Generate comprehensive statistics for your blog across multiple
+            platforms. Analyze your writing activity, engagement metrics, and
+            growth patterns.
           </p>
           <div className="flex items-center justify-center gap-4 text-sm text-slate-500">
             <span className="flex items-center gap-1">
@@ -170,12 +195,14 @@ export default function BlogStatsApp() {
                   <Github className="text-white w-6 h-6" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="font-semibold text-slate-900 mb-1">Open Source Project</h3>
+                  <h3 className="font-semibold text-slate-900 mb-1">
+                    Open Source Project
+                  </h3>
                   <p className="text-slate-600 text-sm mb-3">
                     Explore the code, contribute, or fork this project on GitHub
                   </p>
                   <a
-                    href="https://github.com/yourusername/blog-stats-generator"
+                    href="https://github.com/skarthikeyan96/blog-stats-generator"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 px-4 py-2 bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-colors text-sm font-medium"
@@ -197,7 +224,9 @@ export default function BlogStatsApp() {
                   <span className="text-white font-bold text-lg">PH</span>
                 </div>
                 <div className="flex-1">
-                  <h3 className="font-semibold text-slate-900 mb-1">Featured on Product Hunt</h3>
+                  <h3 className="font-semibold text-slate-900 mb-1">
+                    Featured on Product Hunt
+                  </h3>
                   <p className="text-slate-600 text-sm mb-3">
                     Support us with an upvote and help others discover this tool
                   </p>
@@ -228,7 +257,8 @@ export default function BlogStatsApp() {
                     Generate Stats
                   </CardTitle>
                   <CardDescription>
-                    Select a platform and enter your username to analyze your blog activity
+                    Select a platform and enter your username to analyze your
+                    blog activity
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -243,7 +273,9 @@ export default function BlogStatsApp() {
                           <SelectItem value="devto">
                             <div className="flex items-center gap-2">
                               <div className="w-4 h-4 bg-black rounded flex items-center justify-center">
-                                <span className="text-white text-xs font-bold">D</span>
+                                <span className="text-white text-xs font-bold">
+                                  D
+                                </span>
                               </div>
                               Dev.to
                             </div>
@@ -251,7 +283,9 @@ export default function BlogStatsApp() {
                           <SelectItem value="hashnode" disabled>
                             <div className="flex items-center gap-2">
                               <div className="w-4 h-4 bg-blue-600 rounded flex items-center justify-center">
-                                <span className="text-white text-xs font-bold">H</span>
+                                <span className="text-white text-xs font-bold">
+                                  H
+                                </span>
                               </div>
                               Hashnode (Coming Soon)
                             </div>
@@ -259,7 +293,9 @@ export default function BlogStatsApp() {
                           <SelectItem value="medium" disabled>
                             <div className="flex items-center gap-2">
                               <div className="w-4 h-4 bg-green-600 rounded flex items-center justify-center">
-                                <span className="text-white text-xs font-bold">M</span>
+                                <span className="text-white text-xs font-bold">
+                                  M
+                                </span>
                               </div>
                               Medium (Coming Soon)
                             </div>
@@ -290,8 +326,16 @@ export default function BlogStatsApp() {
                         disabled={loading || platform !== "devto"}
                       />
                     </div>
-                    {error && <div className="text-sm text-red-600 bg-red-50 p-3 rounded-md">{error}</div>}
-                    <Button type="submit" className="w-full" disabled={loading || platform !== "devto"}>
+                    {error && (
+                      <div className="text-sm text-red-600 bg-red-50 p-3 rounded-md">
+                        {error}
+                      </div>
+                    )}
+                    <Button
+                      type="submit"
+                      className="w-full"
+                      disabled={loading || platform !== "devto"}
+                    >
                       {loading ? (
                         <>
                           <Loader2 className="w-4 h-4 mr-2 animate-spin" />
@@ -308,7 +352,9 @@ export default function BlogStatsApp() {
               {/* Platform Tips */}
               <Card className="mt-4">
                 <CardHeader>
-                  <CardTitle className="text-sm">{platformInfo.name} Tips</CardTitle>
+                  <CardTitle className="text-sm">
+                    {platformInfo.name} Tips
+                  </CardTitle>
                 </CardHeader>
                 <CardContent className="text-sm text-slate-600 space-y-2">
                   {platformInfo.tips.map((tip, index) => (
@@ -325,7 +371,9 @@ export default function BlogStatsApp() {
               <div className="flex items-center justify-center h-96">
                 <div className="text-center space-y-4">
                   <Loader2 className="w-8 h-8 animate-spin mx-auto text-slate-600" />
-                  <p className="text-slate-600">Fetching {platformInfo.name} stats...</p>
+                  <p className="text-slate-600">
+                    Fetching {platformInfo.name} stats...
+                  </p>
                 </div>
               </div>
             )}
@@ -337,19 +385,29 @@ export default function BlogStatsApp() {
                     <BookOpen className="w-8 h-8 text-slate-400" />
                   </div>
                   <div className="space-y-2">
-                    <h3 className="text-lg font-semibold text-slate-700">Ready to Generate Blog Stats</h3>
-                    <p className="text-slate-500">Select a platform and enter your username to get started</p>
+                    <h3 className="text-lg font-semibold text-slate-700">
+                      Ready to Generate Blog Stats
+                    </h3>
+                    <p className="text-slate-500">
+                      Select a platform and enter your username to get started
+                    </p>
                   </div>
                 </div>
               </div>
             )}
 
-            {stats && <StatsDisplay stats={stats} year={Number.parseInt(year)} platform={platform} />}
+            {stats && (
+              <StatsDisplay
+                stats={stats}
+                year={Number.parseInt(year)}
+                platform={platform}
+              />
+            )}
           </div>
         </div>
         {/* Footer */}
         <Footer />
       </div>
     </div>
-  )
+  );
 }
