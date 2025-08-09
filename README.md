@@ -161,6 +161,10 @@ We welcome contributions! Here's how to get started:
     <img src="https://img.shields.io/badge/Product%20Hunt-Upvote-orange?style=social&logo=producthunt" alt="Product Hunt" />
   </a>
   
+  <a href="https://buymeacoffee.com/imkarthikeyan">
+    <img src="https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black" alt="Buy Me A Coffee" />
+  </a>
+  
   <br><br>
   <sub>MIT License • Built with <a href="https://nextjs.org">Next.js</a></sub>
 </div>
