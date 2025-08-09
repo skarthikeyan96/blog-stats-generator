@@ -150,30 +150,9 @@ We welcome contributions! Here's how to get started:
 - 📝 **Documentation** - Help improve our docs
 - 💻 **Code** - Submit fixes and features
 
-## 📄 License
-
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
-
-**What this means:**
-
-- ✅ Commercial use, modification, distribution, private use
-- ❗ Must include license and copyright notice
-- ❗ No warranty or liability
-
-### 🐛 Bug Reports
-
-Please include:
-
-- Steps to reproduce
-- Expected vs actual behavior
-- Browser/OS information
-- Screenshots if applicable
-
 ---
 
 <div align="center">
-  <h2>🌟 Show Your Support</h2>
-  
   <a href="https://github.com/skarthikeyan96/blog-stats-generator">
     <img src="https://img.shields.io/github/stars/skarthikeyan96/blog-stats-generator?style=social" alt="GitHub stars" />
   </a>
@@ -182,11 +161,6 @@ Please include:
     <img src="https://img.shields.io/badge/Product%20Hunt-Upvote-orange?style=social&logo=producthunt" alt="Product Hunt" />
   </a>
   
-  <a href="https://twitter.com/intent/tweet?text=Check%20out%20this%20awesome%20Blog%20Stats%20Generator!&url=https://github.com/yourusername/blog-stats-generator">
-    <img src="https://img.shields.io/badge/Twitter-Share-blue?style=social&logo=twitter" alt="Twitter" />
-  </a>
-  
   <br><br>
-  <p><strong>Made with ❤️ by the open-source community</strong></p>
-  <sub>Built with <a href="https://nextjs.org">Next.js</a> • <a href="https://tailwindcss.com">Tailwind CSS</a> • <a href="https://www.typescriptlang.org">TypeScript</a></sub>
+  <sub>MIT License • Built with <a href="https://nextjs.org">Next.js</a></sub>
 </div>
