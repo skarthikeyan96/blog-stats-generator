@@ -143,13 +143,13 @@ export function StatsCardSvg({ stats, year, platform }: StatsCardSvgProps) {
   // Generate markdown code
   const generateMarkdown = () => {
     const apiUrl = generateApiUrl()
-    return `![${stats.user.name}'s Dev.to stats](${apiUrl})`
+    return `![${stats.user.name}'s dev.to stats](${apiUrl})`
   }
 
   // Generate HTML code
   const generateHtml = () => {
     const apiUrl = generateApiUrl()
-    return `<img src="${apiUrl}" alt="${stats.user.name}'s Dev.to stats" />`
+    return `<img src="${apiUrl}" alt="${stats.user.name}'s dev.to stats" />`
   }
 
   const copyMarkdown = async () => {

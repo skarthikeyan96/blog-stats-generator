@@ -100,7 +100,7 @@ export default function BlogStatsApp() {
     switch (platform) {
       case "devto":
         return {
-          name: "Dev.to",
+          name: "dev.to",
           placeholder: "e.g., ben",
           tips: [
             '• Try usernames like "ben", "jess", or "andy"',
@@ -133,7 +133,7 @@ export default function BlogStatsApp() {
         };
       default:
         return {
-          name: "Dev.to",
+          name: "dev.to",
           placeholder: "e.g., ben",
           tips: ["• Select a platform to get started"],
         };
@@ -172,7 +172,7 @@ export default function BlogStatsApp() {
           <div className="flex items-center justify-center gap-4 text-sm text-slate-500">
             <span className="flex items-center gap-1">
               <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-              Dev.to Available
+              dev.to Available
             </span>
             <span className="flex items-center gap-1">
               <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
@@ -277,7 +277,7 @@ export default function BlogStatsApp() {
                                   D
                                 </span>
                               </div>
-                              Dev.to
+                              dev.to
                             </div>
                           </SelectItem>
                           <SelectItem value="hashnode" disabled>
