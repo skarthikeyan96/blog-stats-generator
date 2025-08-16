@@ -22,7 +22,7 @@
 
 **Blog Stats Generator** is an open-source web application that creates beautiful, shareable statistics cards from your blogging data. Perfect for content creators, developers, and bloggers who want to visualize their writing journey and showcase their achievements.
 
-**Current Support**: Dev.to (Hashnode & Medium coming soon)
+**Current Support**: dev.to (Hashnode & Medium coming soon)
 
 **Key Benefits**:
 
@@ -44,7 +44,7 @@
 
 ### 📊 Analytics & Data
 
-- **Multi-Platform Support**: Dev.to (Hashnode & Medium coming soon)
+- **Multi-Platform Support**: dev.to (Hashnode & Medium coming soon)
 - **Comprehensive Stats**: Articles, reactions, comments, views, engagement patterns
 - **Year Filtering**: Generate stats for specific years
 - **Tag Analysis**: Discover your most-used topics
@@ -93,7 +93,7 @@ docker run -p 3000:3000 blog-stats-generator
 
 ### Basic Steps
 
-1. **Select Platform**: Choose Dev.to (more platforms coming soon)
+1. **Select Platform**: Choose dev.to (more platforms coming soon)
 2. **Enter Username**: Your platform username (e.g., "ben")
 3. **Choose Year**: Select year to analyze (2016-present)
 4. **Generate**: Click to create your stats card
@@ -111,7 +111,7 @@ GET /api/stats-card?username=yourusername&year=2024&theme=dark
 ### Embed in README
 
 ```markdown
-![Dev.to stats](https://your-domain.com/api/stats-card?username=yourusername&year=2024&theme=dark)
+![dev.to stats](https://your-domain.com/api/stats-card?username=yourusername&year=2024&theme=dark)
 ```
 
 ### Parameters
