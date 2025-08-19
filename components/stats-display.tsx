@@ -68,7 +68,7 @@ export function StatsDisplay({ stats, year, platform }: StatsDisplayProps) {
   const getPlatformName = () => {
     switch (platform) {
       case "devto":
-        return "Dev.to"
+        return "dev.to"
       case "hashnode":
         return "Hashnode"
       case "medium":
